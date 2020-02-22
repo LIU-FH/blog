@@ -10,8 +10,8 @@ module.exports = {
                 "vue-router": "VueRouter",
                 vuex: "Vuex",
                 axios: "axios",
-                "Cookies": "js-cookie",
-                "VueMaterial":'vue-material'
+                "js-cookie": "Cookies",
+                "vue-material":'VueMaterial'
             };
         }
         const plugins = [];
