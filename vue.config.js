@@ -10,8 +10,8 @@ module.exports = {
                 "vue-router": "VueRouter",
                 vuex: "Vuex",
                 axios: "axios",
-                // "js-cookie": "js-cookie",
-                "vue-material":'vue-material'
+                "Cookies": "js-cookie",
+                "VueMaterial":'vue-material'
             };
         }
         const plugins = [];
@@ -38,7 +38,7 @@ module.exports = {
                 "https://unpkg.com/vue-router/dist/vue-router.min.js",
                 "https://unpkg.com/vuex@3.1.2/dist/vuex.min.js",
                 "https://unpkg.com/axios@0.19.2/dist/axios.min.js",
-                // "https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js",
+                "https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js",
             ]
         } : {};
         config.plugin("html").tap(args => {
