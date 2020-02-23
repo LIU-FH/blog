@@ -36,4 +36,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+    .max-height-none .md-content{
+        max-height: none!important;
+    }
 </style>

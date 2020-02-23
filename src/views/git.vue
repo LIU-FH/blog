@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto py-20">
+    <div class="container mx-auto py-24">
         <div class="flex">
             <div class="flex-none w-3/12 mr-6">
                 <md-content class="md-elevation-7">

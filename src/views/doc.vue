@@ -1,28 +1,28 @@
 <template>
-    <div class="container mx-auto py-20">
+    <div class="container mx-auto py-24">
         <div class="grid grid-cols-5 gap-6">
             <md-card v-for="(item, index) in 6" :key="index">
-                <md-card-media-cover md-solid>
+                <md-card-media-cover>
                     <md-card-media md-ratio="1:1">
-                        <img src="https://cdn.pixabay.com/photo/2018/08/23/22/29/girl-3626901_1280.jpg"
+                        <img src="https://images.pexels.com/photos/2906664/pexels-photo-2906664.png"
                              alt="Skyscraper">
                     </md-card-media>
                     <md-card-area>
                         <md-card-header>
-                            <span class="md-title">Solid background</span>
-                            <span class="md-subhead">1/1 image</span>
+                            <span class="md-title">Without text background</span>
                         </md-card-header>
+
+                        <md-card-actions>
+                            <md-button class="md-icon-button">
+                                <md-icon>favorite</md-icon>
+                            </md-button>
+
+                            <md-button class="md-icon-button">
+                                <md-icon>share</md-icon>
+                            </md-button>
+                        </md-card-actions>
                     </md-card-area>
                 </md-card-media-cover>
-                <div>
-                    <md-button class="md-icon-button">
-                        <md-icon>favorite</md-icon>
-                    </md-button>
-
-                    <md-button class="md-icon-button">
-                        <md-icon>share</md-icon>
-                    </md-button>
-                </div>
             </md-card>
         </div>
         <div class="my-8">

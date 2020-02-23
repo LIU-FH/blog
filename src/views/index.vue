@@ -1,13 +1,10 @@
 <template>
     <div>
-        <md-toolbar class="w-full" style="position: fixed;z-index: 100"
+        <md-toolbar class="w-full" style="position: fixed;z-index: 8"
                     :md-elevation="scrollTopData < 20 && $route.name === 'home' ? 0 : 4"
-                    :class="scrollTopData < 20 && $route.name === 'home' ? 'md-transparent':''">
-            <div class="ml-3 flex items-center absolute left-0 top-0 h-full">
-                <md-button class="md-fab md-mini">
-                    <img src="https://cdn.vuetifyjs.com/images/john.jpg">
-                </md-button>
-                <p class="ml-2">LIUFH</p>
+                    :class="scrollTopData < 20 && $route.name === 'home' ? 'md-transparent':'bg-white'">
+            <div class="ml-2 flex items-center absolute left-0 top-0 h-full">
+                <img class="w-32" src="../assets/img/logo.png">
             </div>
             <div class="container mx-auto">
                 <md-button v-for="(item,index) in navData" :key="index"
@@ -18,25 +15,18 @@
                 </md-button>
             </div>
             <div class="absolute right-0 top-0 h-full flex items-center pr-5">
-                <md-menu md-size="big" md-align-trigger>
-                    <md-button class="md-icon-button" md-menu-trigger>
-                        <md-icon>contacts</md-icon>
-                    </md-button>
-                    <md-menu-content>
-                        <div class="author-card">
-                            <md-avatar class="md-large">
-                                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="Marcos Moura">
-                            </md-avatar>
-                            <div class="author-card-info">
-                                <span>Marcos Moura</span>
-                                <div class="author-card-links">
-                                    <a href="https://linkedin.com/in/marcosvmmoura" target="_blank" rel="noopener">Linkedin</a>
-                                    <a href="https://github.com/marcosmoura" target="_blank" rel="noopener">GitHub</a>
-                                </div>
-                            </div>
-                        </div>
-                    </md-menu-content>
-                </md-menu>
+                <md-button class="md-icon-button" md-menu-trigger>
+                    <i class="icon-search text-lg"/>
+                    <md-tooltip md-direction="bottom">搜索</md-tooltip>
+                </md-button>
+                <md-button to="/writer" class="md-icon-button" md-menu-trigger>
+                    <i class="icon-xiezuo text-lg"/>
+                    <md-tooltip md-direction="bottom">写作台</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button" md-menu-trigger>
+                    <i class="icon-shezhi text-lg"/>
+                    <md-tooltip md-direction="bottom">设置</md-tooltip>
+                </md-button>
             </div>
         </md-toolbar>
         <router-view/>
@@ -70,7 +60,9 @@
     .md-transparent, .md-transparent a, .md-transparent i, .md-transparent p {
         color: white;
     }
-
+    .bg-white{
+        background-color: #ffffff;
+    }
     .md-toolbar, .md-toolbar-row {
         transition: .1s cubic-bezier(.4, 0, .2, 1);
     }
