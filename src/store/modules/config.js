@@ -11,4 +11,5 @@ export default {
     scrollBottom:0,
     chatFriend:{},
     chatCurrentFriend:{},
+    assetsUpload:[]
 }

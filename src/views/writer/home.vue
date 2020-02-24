@@ -1,14 +1,5 @@
 <template>
     <div class="container mx-auto py-24">
-        <div class="mb-10 flex">
-            <md-button class="md-raised flex-1">MD</md-button>
-            <md-button class="md-raised flex-1">上传</md-button>
-            <md-button class="md-raised flex-1">爬虫</md-button>
-            <md-button class="md-raised flex-1">HTML转MD</md-button>
-            <md-button class="md-raised flex-1">博文</md-button>
-            <md-button class="md-raised flex-1">GIT</md-button>
-            <md-button class="md-raised flex-1">文档</md-button>
-        </div>
         <div class="grid grid-cols-3 gap-5">
             <md-card class="col-span-1">
                 <md-card-header>
@@ -60,13 +51,21 @@
            <p class="mt-3">使用GitHub作为存储空间，托管静态资源。</p>
        </div>
         <div class="grid grid-cols-4 gap-5 mt-5">
-            <md-content class="col-span-1 md-elevation-2 h-64 flex items-center justify-center">
-                <md-button class="md-fab">
+            <md-content class="col-span-1 md-elevation-2 h-64 flex flex-col items-center justify-center">
+                <md-button class="md-fab ">
                     <p class="text-white">1000</p>
                 </md-button>
+                <div class="mt-8">
+                    <md-button to="/writer/mdeditor" class="md-raised">MD</md-button>
+                    <md-button to="/writer/images" class="md-raised">图片</md-button>
+                    <md-button class="md-raised">爬虫</md-button>
+                </div>
             </md-content>
             <md-content class="col-span-3 md-elevation-2 text-center">
-                <div class="w-full h-full flex items-center justify-center">
+                <div v-if="assetsUploadData">
+                    {{assetsUploadData}}
+                </div>
+                <div v-else class="w-full h-full flex items-center justify-center">
                     暂无上传任务
                 </div>
             </md-content>
@@ -75,8 +74,15 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex'
     export default {
-        name: "home"
+        name: "home",
+        methods: {
+            ...mapActions(['assetsUpload']),
+        },
+        computed: {
+            ...mapGetters(['assetsUploadData']),
+        }
     }
 </script>
 

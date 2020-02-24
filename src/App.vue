@@ -39,4 +39,11 @@
     .max-height-none .md-content{
         max-height: none!important;
     }
+    .mdEditor .v-note-op{
+        padding: 5px!important;
+        padding-right: 100px!important;
+    }
+    .mdEditor.v-note-wrapper{
+        z-index: 0!important;
+    }
 </style>

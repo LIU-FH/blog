@@ -13,6 +13,8 @@ const WriterHome = () => import('../views/writer/home.vue')
 const WriterArticle = () => import('../views/writer/article.vue')
 const WriterGit = () => import('../views/writer/git.vue')
 const WriterDoc = () => import('../views/writer/doc.vue')
+const WriterMdEditor = () => import('../views/writer/work/mdEditor.vue')
+const WriterImages = () => import('../views/writer/work/images.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -73,9 +75,18 @@ const routes = [
                 path: '/writer/doc',
                 name: 'WriterDoc',
                 component: WriterDoc,
-            }
+            },
         ]
+    },{
+        path: '/writer/mdeditor',
+        name: 'WriterMdEditor',
+        component: WriterMdEditor,
     },
+    {
+        path: '/writer/images',
+        name: 'WriterImages',
+        component: WriterImages,
+    }
 ]
 
 const router = new VueRouter({
