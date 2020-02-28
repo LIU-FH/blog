@@ -1,7 +1,8 @@
+import axios from "axios";
 import qs from "qs";
 import Utils from '../utils'
 
-const baseURL = process.env.NODE_ENV === "production" ? "/api/v1" : "http://www.liufh.com/api/v1"
+const baseURL = process.env.NODE_ENV === "production" ? "/api/v1" : "http://local.api.com/api/v1"
 
 /**
  * axios发起请求

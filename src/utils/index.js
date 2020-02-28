@@ -26,10 +26,23 @@ function qsStringifyParams(params) {
 function qsParseParams(params) {
     return qs.parse(params)
 }
+
+function fileToBlob(file) {
+    let blob = null;
+    if (window.createObjectURL != undefined) {
+        blob = window.createObjectURL(file);
+    } else if (window.URL != undefined) {
+        blob = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) {
+        blob = window.webkitURL.createObjectURL(file);
+    }
+    return blob;
+}
 export default {
     isObject,
     randomArrItem,
     decodeEntities,
     qsStringifyParams,
     qsParseParams,
+    fileToBlob,
 }

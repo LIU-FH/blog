@@ -5,16 +5,17 @@ const Index = () => import('../views/index.vue')
 const Home = () => import('../views/home.vue')
 const Article = () => import('../views/article/index.vue')
 const Doc = () => import('../views/doc.vue')
-const Git = () => import('../views/git.vue')
+const Collector = () => import('../views/collector.vue')
 const Tool = () => import('../views/tool.vue')
 const About = () => import('../views/about.vue')
 const Writer = () => import('../views/writer/index.vue')
 const WriterHome = () => import('../views/writer/home.vue')
 const WriterArticle = () => import('../views/writer/article.vue')
-const WriterGit = () => import('../views/writer/git.vue')
+const WriterCollector = () => import('../views/writer/collector.vue')
 const WriterDoc = () => import('../views/writer/doc.vue')
 const WriterMdEditor = () => import('../views/writer/work/mdEditor.vue')
 const WriterImages = () => import('../views/writer/work/images.vue')
+const WriterCheatSheet = () => import('../views/writer/work/cheatSheet.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,9 +35,9 @@ const routes = [
                 component: Article,
             },
             {
-                path: '/git',
-                name: 'git',
-                component: Git,
+                path: '/collector',
+                name: 'collector',
+                component: Collector,
             }, {
                 path: '/doc',
                 name: 'doc',
@@ -68,9 +69,9 @@ const routes = [
                 component: WriterArticle,
             },
             {
-                path: '/writer/git',
-                name: 'WriterGit',
-                component: WriterGit,
+                path: '/writer/collector',
+                name: 'WriterCollector',
+                component: WriterCollector,
             }, {
                 path: '/writer/doc',
                 name: 'WriterDoc',
@@ -86,6 +87,10 @@ const routes = [
         path: '/writer/images',
         name: 'WriterImages',
         component: WriterImages,
+    },{
+        path: '/writer/cheatsheet',
+        name: 'WriterCheatSheet',
+        component: WriterCheatSheet,
     }
 ]
 
