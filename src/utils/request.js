@@ -1,6 +1,8 @@
 import axios from "axios";
 import qs from "qs";
+import Cookies from "js-cookie";
 import Utils from '../utils'
+import localforage from 'localforage';
 
 const baseURL = process.env.NODE_ENV === "production" ? "/api/v1" : "http://local.api.com/api/v1"
 
@@ -72,7 +74,6 @@ export default function (config, data = {}) {
             doHttp()
         }
         async function doHttp() {
-
             axios(httpConfig).then((res) => {
                 if (config.method === 'GET'){
                     localforage.setItem(url, res.data).catch(function (err) {

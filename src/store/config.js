@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 export default {
     user: {
-        mutations: function () {
+        mutations: function (state) {
             return Cookies.get('user') ? JSON.parse(Utils.decodeEntities(Cookies.get('user'))) : {}
         },
     },
@@ -14,5 +14,13 @@ export default {
     scrollBottom: 0,
     chatFriend: {},
     chatCurrentFriend: {},
-    fileUpload: {}
+    mdDraft: {
+        title: '',
+        content: ''
+    },
+    showFileList: {
+        mutations: function (state) {
+            return state.showFileList > 0 ? state.showFileList + 1 : 1
+        },
+    }
 }

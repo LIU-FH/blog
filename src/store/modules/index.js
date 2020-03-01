@@ -12,7 +12,7 @@ Object.keys(config).forEach(function (key) {
     }
     mutations[key] = function (state, params) {
         if (config[key].mutations) {
-            state[key] = config[key].mutations(params)
+            state[key] = config[key].mutations(state, params)
         } else {
             state[key] = params
         }

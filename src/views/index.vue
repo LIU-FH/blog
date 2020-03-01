@@ -1,8 +1,8 @@
 <template>
     <div>
         <md-toolbar class="w-full" style="position: fixed;z-index: 8"
-                    :md-elevation="scrollTopData < 20 && $route.name === 'home' ? 0 : 4"
-                    :class="scrollTopData < 20 && $route.name === 'home' ? 'md-transparent':'bg-white'">
+                    :md-elevation="scrollTopData < 30 && $route.name === 'home' ? 0 : 4"
+                    :class="scrollTopData < 30 && $route.name === 'home' ? 'md-transparent':'bg-white'">
             <div class="ml-2 flex items-center absolute left-0 top-0 h-full">
                 <img class="w-32" src="../assets/img/logo.png">
             </div>
@@ -42,8 +42,8 @@
             navData: [
                 {title: '首页', to: '/', name: 'home'},
                 {title: '博文', to: '/article', name: 'article'},
-                {title: '文档', to: '/doc', name: 'doc'},
-                {title: '收藏', to: '/collector', name: 'collector'},
+                {title: '文档', to: '/doc', name: 'doc', disabled: true},
+                {title: '收藏', to: '/collector', name: 'collector', disabled: true},
                 {title: '工具', to: '/tool', name: 'tool', disabled: true},
                 {title: '关于', to: '/about', name: 'about', disabled: true},
             ]

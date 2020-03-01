@@ -1,79 +1,67 @@
 <template>
     <div>
-        <md-dialog :md-active.sync="showDialog">
-            <md-dialog-title class="text-center">博文</md-dialog-title>
-            <md-dialog-content style="width: 600px">
-                <md-field>
-                    <label>标题</label>
-                    <md-input v-model="fromData.title"></md-input>
-                </md-field>
-                <md-field>
-                    <label for="movies">标签</label>
-                    <md-select v-model="fromData.tags" name="movies" id="movies" multiple>
-                        <md-option value="fight-club">Fight Club</md-option>
-                        <md-option value="godfather">Godfather</md-option>
-                        <md-option value="godfather-ii">Godfather II</md-option>
-                        <md-option value="godfather-iii">Godfather III</md-option>
-                        <md-option value="godfellas">Godfellas</md-option>
-                        <md-option value="pulp-fiction">Pulp Fiction</md-option>
-                        <md-option value="scarface">Scarface</md-option>
-                    </md-select>
-                </md-field>
-                <md-field>
-                    <label>展示图</label>
-                    <md-input v-model="fromData.pic"></md-input>
-                    <i class="icon-tubiao text-lg cursor-pointer"/>
-                </md-field>
-            </md-dialog-content>
-            <md-dialog-actions>
-                <div class="mb-3 flex items-center justify-between w-full">
-                    <md-switch v-model="fromData.status" value="1">是否发布</md-switch>
-                    <div>
-                        <md-button class="md-primary" @click="showDialog = false">关闭</md-button>
-                        <md-button class="md-primary" @click="showDialog = false">保存</md-button>
-                    </div>
-                </div>
-            </md-dialog-actions>
-        </md-dialog>
+        <md-dialog-prompt
+                :md-active.sync="showDialog"
+                v-model="mdDraftData.title"
+                md-title="What's your name?"
+                md-input-maxlength="30"
+                md-input-placeholder="Type your name..."
+                md-confirm-text="保存"
+                @md-confirm="handleConfirm"
+        />
         <div class="absolute top-0 right-0" style="z-index: 2">
             <md-button class="md-raised md-accent" @click="showDialog = true">保存</md-button>
         </div>
-        <mavon-editor
-                id="editor"
-                class="h-screen mdEditor"
-                v-model="value"
-                @change="handleChange"/>
+        <mavon-editor id="editor" class="h-screen mdEditor" v-model="mdDraftData.content"/>
+        <md-speed-dial class="md-bottom-right">
+            <md-speed-dial-target  @click="showFileList">
+                <i class="icon-wenjian text-white"></i>
+            </md-speed-dial-target>
+        </md-speed-dial>
+        <file-list/>
     </div>
 </template>
 
 <script>
-    import {mavonEditor} from 'mavon-editor'
-    import 'mavon-editor/dist/css/index.css'
+    import {mapActions, mapGetters} from "vuex";
+    import {mavonEditor} from "mavon-editor";
+    import "mavon-editor/dist/css/index.css";
+    import md5 from 'crypto-js/md5';
+    import localforage from 'localforage';
+    import FileList from "./fileList";
 
     export default {
         name: "mdEditor",
-        components: {mavonEditor},
+        components: {FileList, mavonEditor},
         data: () => ({
-            showDialog:false,
-            value:'',
-            fromData:{
-                title:"",
-                pic:"",
-                tags:[],
-                url:"",
-                status:1,
-            }
+            showDialog: false,
+            value: "",
         }),
         mounted() {
         },
         methods: {
-            handleChange(val) {
-                this.$emit('input', val)
+            ...mapActions(["mdDraft", "fileUpload", "showFileList"]),
+            handleConfirm() {
+                let fileInfo = {
+                    name: this.mdDraftData.title + ".md",
+                    type: "md",
+                    size: this.mdDraftData.content.length,
+                    status: 0,
+                    key: "FileUpload-" + md5(this.mdDraftData.title)
+                }
+                let blob = new Blob([this.mdDraftData.content], {
+                    type: "text/plain"
+                });
+                localforage.setItem(fileInfo.key, blob).then(() => {
+                    this.fileUpload(fileInfo)
+                })
             },
         },
-    }
+        computed: {
+            ...mapGetters(["mdDraftData"]),
+        }
+    };
 </script>
 
 <style scoped>
-
 </style>

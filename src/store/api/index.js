@@ -1,6 +1,5 @@
-import blog from "./blog";
-import user from "./user";
-import spider from "./spider";
+import file from "./file";
+import article from "./article";
 
-const api = Object.assign(blog, user, spider)
+const api = Object.assign(file, article)
 export default api

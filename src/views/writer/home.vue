@@ -12,7 +12,9 @@
                 </md-card-content>
 
                 <md-card-actions>
-                    <md-button to="/writer/mdeditor">新建</md-button>
+                    <edit-article>
+                        <md-button>新建</md-button>
+                    </edit-article>
                     <md-button to="/writer/article">查看</md-button>
                 </md-card-actions>
             </md-card>
@@ -49,6 +51,18 @@
             </md-card>
         </div>
         <div class="mt-10">
+            <md-button class="md-raised" to="/writer/mdeditor">MD编辑器</md-button>
+            <upload-file>
+                <div class="md-button md-raised md-theme-default">
+                    <div class="md-ripple">
+                        <div class="md-button-content">资源上传</div>
+                    </div>
+                </div>
+            </upload-file>
+            <md-button class="md-raised" to="/writer/spider">爬虫</md-button>
+            <md-button class="md-raised" to="/writer/turndown">MD转换</md-button>
+        </div>
+        <div class="mt-10">
             <div class="flex items-center justify-between">
                 <p class="text-2xl">资源管理器</p>
             </div>
@@ -59,16 +73,6 @@
                 <md-button class="md-fab">
                     <p class="text-white">1000</p>
                 </md-button>
-                <div class="mt-8 text-center">
-                    <label for="fileInput">
-                        <div class="md-button md-raised md-theme-default">
-                            <div class="md-ripple">
-                                <div class="md-button-content">上传</div>
-                            </div>
-                        </div>
-                        <input type="file" v-show="false" id="fileInput" @change="uploadFile">
-                    </label>
-                </div>
             </md-content>
             <md-content class="col-span-3 md-elevation-2 h-64 overflow-y-auto md-scrollbar">
                 <div v-if="fileUploadData.length > 0">
@@ -82,60 +86,28 @@
                         </div>
                     </div>
                 </div>
-                <div v-else class="w-full h-full flex items-center justify-center">
-                    暂无上传任务
-                </div>
+                <div v-else class="w-full h-full flex items-center justify-center">暂无上传任务</div>
             </md-content>
         </div>
     </div>
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
-    import axios from 'axios'
+    import {mapActions, mapGetters} from "vuex";
+    import UploadFile from "./work/uploadFile";
+    import EditArticle from "./work/editArticle";
 
     export default {
         name: "home",
+        components: {EditArticle, UploadFile},
         methods: {
-            ...mapActions(['fileUpload']),
-            uploadFile(e) {
-                let file = e.target.files[0]
-                let fileInfo = {
-                    name: file.name,
-                    size: file.size,
-                }
-                this.updateFileUploadData(fileInfo, 'add')
-                let formData = new FormData()
-                formData.append('file', file)
-                axios({
-                    method: "POST",
-                    baseURL: "http://local.api.com/api/v1",
-                    url: '/file',
-                    data: formData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json'
-                    },
-                }).then((res) => {
-                    this.updateFileUploadData(fileInfo, 'del')
-                })
-            },
-            updateFileUploadData(val, event) {
-                let newData
-                if (event === "add") {
-                    newData = this._.concat(this.fileUploadData.length > 0 ? this.fileUploadData : [], val)
-                } else if (event === "del") {
-                    newData = this._.pull(this.fileUploadData, val)
-                }
-                this.fileUpload(newData)
-            }
+            ...mapActions([]),
         },
         computed: {
-            ...mapGetters(['fileUploadData']),
+            ...mapGetters(["fileUploadData"])
         }
-    }
+    };
 </script>
 
 <style scoped>
-
 </style>

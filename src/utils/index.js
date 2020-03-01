@@ -14,7 +14,7 @@ function isObject(val) {
 
 function qsStringifyParams(params) {
     let queryArr = []
-    for (let key in params){
+    for (let key in params) {
         if (isObject(params[key])) {
             queryArr.push(qs.stringify({[key]: params[key]}, {encode: false}))
         } else {
@@ -23,26 +23,21 @@ function qsStringifyParams(params) {
     }
     return queryArr.join('&')
 }
+
 function qsParseParams(params) {
     return qs.parse(params)
 }
 
-function fileToBlob(file) {
-    let blob = null;
-    if (window.createObjectURL != undefined) {
-        blob = window.createObjectURL(file);
-    } else if (window.URL != undefined) {
-        blob = window.URL.createObjectURL(file);
-    } else if (window.webkitURL != undefined) {
-        blob = window.webkitURL.createObjectURL(file);
-    }
-    return blob;
+function getUrlName(url) {
+    let arr = url.split('/')
+    return arr[arr.length - 1].split('.')[0]
 }
+
 export default {
     isObject,
     randomArrItem,
     decodeEntities,
     qsStringifyParams,
     qsParseParams,
-    fileToBlob,
+    getUrlName,
 }

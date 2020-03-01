@@ -14,8 +14,9 @@ const WriterArticle = () => import('../views/writer/article.vue')
 const WriterCollector = () => import('../views/writer/collector.vue')
 const WriterDoc = () => import('../views/writer/doc.vue')
 const WriterMdEditor = () => import('../views/writer/work/mdEditor.vue')
-const WriterImages = () => import('../views/writer/work/images.vue')
 const WriterCheatSheet = () => import('../views/writer/work/cheatSheet.vue')
+const WriterSpider = () => import('../views/writer/work/spider.vue')
+const WriterTurndown = () => import('../views/writer/work/turndown.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -84,13 +85,17 @@ const routes = [
         component: WriterMdEditor,
     },
     {
-        path: '/writer/images',
-        name: 'WriterImages',
-        component: WriterImages,
+        path: '/writer/spider',
+        name: 'WriterSpider',
+        component: WriterSpider,
     },{
         path: '/writer/cheatsheet',
         name: 'WriterCheatSheet',
         component: WriterCheatSheet,
+    },{
+        path: '/writer/turndown',
+        name: 'WriterTurndown',
+        component: WriterTurndown,
     }
 ]
 

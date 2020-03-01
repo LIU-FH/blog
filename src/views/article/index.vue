@@ -1,53 +1,75 @@
 <template>
     <div class="container mx-auto py-20">
-        <div>
-            <md-badge v-for="(item, index) in 50" :key="index" color="blue300" class="my-3 mx-2" md-content="1"
-                      md-dense>
-                <md-button class="md-raised">Default</md-button>
-            </md-badge>
-        </div>
         <div class="grid grid-cols-2 gap-6 mt-8">
-            <md-content v-for="(item, index) in 20" :key="index" class="p-3 md-elevation-7">
+            <md-content v-for="(item, index) in articleListData.data" :key="index" class="p-3 md-elevation-7 mb-5">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0">
-                        <img class="rounded-lg md:w-56"
-                             src="https://cdn.pixabay.com/photo/2016/10/12/02/56/girl-1733352_1280.jpg"
-                             alt="Woman paying for a purchase">
+                        <img class="rounded-lg md:w-56 h-40"
+                             src="https://raw.githubusercontent.com/LIU-FH/assets/master/file/20/03/Uml7ykBIrDzyIilV4vFuWfZiqqIIUoZS51XKrp6W.jpeg">
                     </div>
-                    <div class="mt-4 md:mt-0 md:ml-6">
-                        <a href="#"
-                           class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">Finding
-                            customers for your new business</a>
-                        <p class="mt-2 text-gray-600">Getting a new business off the ground is a lot of hard work. Here
-                            are five ideas you can use to find your first customers.</p>
-                        <mu-button flat color="primary">Primary</mu-button>
-                        <mu-button flat color="secondary">Secondary</mu-button>
+                    <div class="w-full mt-4 md:mt-0 md:ml-6">
+                        <div class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">
+                            {{item.title}}
+                        </div>
+                        <p class="mt-1 text-gray-600 desc leading-6 h-12 py-1">
+                            {{item.desc}}
+                        </p>
+                        <p class="mt-6  text-gray-800">{{item.created_at}}</p>
+                        <div class="mt-3">
+                            <md-chip class="md-primary" v-for="chip in item.tags" :key="chip">{{ chip }}</md-chip>
+                        </div>
+                        <div class="text-right h-0" style="margin-top: -25px">
+                            <md-button class="md-fab" style="background-color: #ffffff">
+                                <i class="icon-fangxiangyou"/>
+                            </md-button>
+                        </div>
                     </div>
                 </div>
             </md-content>
         </div>
-        <div class="text-center pt-8">
-            <md-button disabled>Disabled</md-button>
-            <md-button>Disabled</md-button>
-        </div>
+<!--        <div class="text-center pt-8">-->
+<!--            <md-button disabled>Disabled</md-button>-->
+<!--            <md-button>Disabled</md-button>-->
+<!--        </div>-->
     </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: 'index',
         data: () => ({
-            active: 0
+            active: 0,
+            page: 0,
         }),
+        mounted() {
+            this.loadData();
+        },
         methods: {
-            handleClose() {
-                window.alert('你点击了删除按钮')
-            }
+            ...mapActions(["showFileList", "articleList"]),
+            loadData() {
+                let params = {
+                    sort: '-created_at',
+                    page: this.page,
+                }
+                document.documentElement.scrollTop = 0
+                this.articleList({
+                    params: params
+                })
+            },
+        },
+        computed: {
+            ...mapGetters(['articleListData']),
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+    .desc {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
 </style>

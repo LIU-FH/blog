@@ -8,12 +8,10 @@ import './assets/font/iconfont.css'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
-import localforage from 'localforage'
 import utils from "./utils/index";
-
-import _ from 'lodash'
-Vue.prototype._ = _
-Vue.prototype.localforage = localforage
+import VueClipboard from 'vue-clipboard2'
+VueClipboard.config.autoSetContainer = true
+Vue.use(VueClipboard)
 Vue.prototype.$utils = utils
 Vue.use(VueMaterial)
 
