@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-dialog class="file-width  overflow-y-auto md-scrollbar" style="height: 90vh;" :md-active.sync="showDialog">
+        <md-dialog class="file-width  overflow-y-auto md-scrollbar" style="height: 90vh;z-index: 100" :md-active.sync="showDialog">
             <div class="absolute right-0 z-10 flex items-center pl-5 ">
                 <md-field>
                     <label>Search</label>

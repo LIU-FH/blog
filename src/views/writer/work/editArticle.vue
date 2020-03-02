@@ -44,7 +44,7 @@
 
     export default {
         name: "editArticle",
-        props: ['id'],
+        props: ['item'],
         data: () => ({
             showDialog: false,
             value: "",
@@ -75,18 +75,14 @@
             url:function () {
                 this.fromData.url = this.url
                 this.fromData.title = this.$utils.getUrlName(this.url);
+            },
+            item:function () {
+                this.fromData = this.item
+                this.url = this.item.url
             }
         },
         methods: {
             ...mapActions(["showFileList", 'articleDetails', 'articleAdd', 'articleEdit']),
-            loadData() {
-                if (this.id) {
-                    this.articleDetails({
-                        path: {id: this.id},
-                        cache: false
-                    })
-                }
-            },
             doSubmit() {
                 if (this.fromData.id) {
                     this.articleEdit({

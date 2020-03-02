@@ -11,7 +11,8 @@ module.exports = {
                 vuex: "Vuex",
                 axios: "axios",
                 "js-cookie": "Cookies",
-                "vue-material":'VueMaterial'
+                "vue-material":'VueMaterial',
+                "vue-lazyload":"VueLazyload",
             };
         }
         const plugins = [];
@@ -39,6 +40,7 @@ module.exports = {
                 "https://unpkg.com/vuex@3.1.2/dist/vuex.min.js",
                 "https://unpkg.com/axios@0.19.2/dist/axios.min.js",
                 "https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js",
+                "https://unpkg.com/vue-lazyload/vue-lazyload.js",
             ]
         } : {};
         config.plugin("html").tap(args => {
