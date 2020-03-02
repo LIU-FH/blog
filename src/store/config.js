@@ -10,8 +10,12 @@ export default {
         },
     },
     token: {},
-    scrollTop: 0,
-    scrollBottom: 0,
+    scrollTop: {
+        getters: function (val) {
+            return val > 0 ? parseInt(val) : 0
+        }
+    },
+    scrollBottom: {},
     chatFriend: {},
     chatCurrentFriend: {},
     mdDraft: {

@@ -70,7 +70,7 @@
         computed: {
             ...mapGetters(['articleListData']),
             list() {
-                return this.articleListData.data ? this.articleListData.data : []
+                return this.articleListData && this.articleListData.data ? this.articleListData.data : []
             }
         }
     }

@@ -8,7 +8,11 @@ const actions = {};
 Object.keys(config).forEach(function (key) {
     state[key] = {}
     getters[key + 'Data'] = function (state) {
-        return state[key]
+        if (config[key].getters) {
+            return config[key].getters(state[key])
+        } else {
+            return state[key]
+        }
     }
     mutations[key] = function (state, params) {
         if (config[key].mutations) {

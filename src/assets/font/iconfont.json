@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4658670",
+      "name": "官网",
+      "font_class": "guanwang-copy",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "4829121",
+      "name": "测试",
+      "font_class": "ceshi",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "7303765",
+      "name": "npm",
+      "font_class": "npm",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
       "icon_id": "10237936",
       "name": "md",
       "font_class": "md",

@@ -57,32 +57,26 @@
                 desc: "",
                 status: 1
             },
-            url:''
+            url: ''
         }),
         watch: {
-            $route: function () {
-                this.localData()
-            },
-            articleDetailsData: function (val) {
-                this.data = val.data
-            },
             articleAddData: function (val) {
                 this.showDialog = false
             },
             articleEditData: function (val) {
                 this.showDialog = false
             },
-            url:function () {
+            url: function () {
                 this.fromData.url = this.url
                 this.fromData.title = this.$utils.getUrlName(this.url);
             },
-            item:function () {
+            item: function () {
                 this.fromData = this.item
                 this.url = this.item.url
             }
         },
         methods: {
-            ...mapActions(["showFileList", 'articleDetails', 'articleAdd', 'articleEdit']),
+            ...mapActions(["showFileList", 'articleAdd', 'articleEdit']),
             doSubmit() {
                 if (this.fromData.id) {
                     this.articleEdit({
@@ -97,7 +91,7 @@
             },
         },
         computed: {
-            ...mapGetters(['articleDetailsData', 'articleAddData', 'articleEditData']),
+            ...mapGetters(['articleAddData', 'articleEditData']),
         }
     };
 </script>

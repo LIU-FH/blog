@@ -1,38 +1,78 @@
 <template>
     <div class="container mx-auto py-24">
-        <div class="flex">
-            <div class="flex-none w-3/12 mr-6">
-                <md-content class="md-elevation-7">
-                    <md-list>
-                        <md-list-item v-for="(item,index) in 10" :key="index" to="/git">Router <code>/router/1</code>
-                        </md-list-item>
-                    </md-list>
-                </md-content>
-            </div>
-            <div class="flex-1">
-                <md-content v-for="(item, index) in 20" :key="index" class="p-3 mb-5 md-elevation-7">
-                    <a href="#" class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">Finding
-                        customers for your new business</a>
-                    <p class="mt-5 text-gray-600">Getting a new business off the ground is a lot of hard work. Here are
-                        five
-                        ideas you can use to find your first customers.</p>
-                    <div class="mt-5">
-                        <mu-chip v-for="(item,index) in 3" :key="index" class="mr-3">
-                            default chip
-                        </mu-chip>
-                    </div>
-                </md-content>
-            </div>
+        <div class="grid grid-cols-6 gap-6">
+            <md-card v-for="(item, index) in collectorListData.data" :key="index">
+                <md-card-area>
+                    <md-card-media class="border-b">
+                        <img style="height: 110px" v-lazy="item.pic">
+                        <div class="absolute text-center w-full" style="margin-top: -20px">
+                            <md-button v-if="item.github" :href="item.github" target="_blank" class="md-icon-button md-raised">
+                                <i class="icon-github text-lg"/>
+                                <md-tooltip md-direction="bottom">GitHub</md-tooltip>
+                            </md-button>
+                            <md-button v-if="item.website" :href="item.website" target="_blank" class="md-icon-button md-raised">
+                                <i class="icon-guanwang-copy text-lg"/>
+                                <md-tooltip md-direction="bottom">官网</md-tooltip>
+                            </md-button>
+                            <md-button v-if="item.example" :href="item.example" target="_blank" class="md-icon-button md-raised">
+                                <i class="icon-ceshi text-lg"/>
+                                <md-tooltip md-direction="bottom">使用教程</md-tooltip>
+                            </md-button>
+                        </div>
+                    </md-card-media>
+                    <md-card-header class="title h-12 leading-6 text-lg font-medium mt-2 text-center">
+                        {{item.title}}
+                    </md-card-header>
+                    <md-card-content class="desc h-10 leading-4 mt-2 mb-3 text-sm text-gray-600" style="font-size:.85rem;">
+                       {{item.desc}}
+                    </md-card-content>
+                </md-card-area>
+            </md-card>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
     export default {
-        name: "git"
+        name: "collector",
+        data: () => ({
+            active: 0,
+            page: 0,
+        }),
+        mounted() {
+            this.loadData();
+        },
+        methods: {
+            ...mapActions(["collectorList"]),
+            loadData() {
+                let params = {
+                    sort: '-created_at',
+                    page: this.page,
+                }
+                document.documentElement.scrollTop = 0
+                this.collectorList({
+                    params: params
+                })
+            },
+        },
+        computed: {
+            ...mapGetters(['collectorListData']),
+        }
     }
 </script>
 
 <style scoped>
-
+    .title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .desc {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
 </style>

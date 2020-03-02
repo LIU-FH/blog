@@ -14,12 +14,14 @@
                         <p class="mt-1 text-gray-600 desc leading-6 h-12 py-1">
                             {{item.desc}}
                         </p>
-                        <p class="mt-3  text-gray-800">{{item.created_at}}</p>
-                        <div class="mt-2">
-                            <md-chip class="md-primary" v-for="chip in item.tags" :key="chip">{{ chip }}</md-chip>
-                        </div>
-                        <div class="text-right h-0" style="margin-top: -20px">
-                            <md-button class="md-fab" style="background-color: #ffffff">
+                        <div class="flex items-end justify-between mt-4">
+                            <div>
+                                <p class="text-gray-800">{{item.created_at}}</p>
+                                <div class="mt-2">
+                                    <md-chip v-for="chip in item.tags" :key="chip">{{ chip }}</md-chip>
+                                </div>
+                            </div>
+                            <md-button class="md-icon-button md-raised md-primary">
                                 <i class="icon-fangxiangyou"/>
                             </md-button>
                         </div>

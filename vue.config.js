@@ -3,6 +3,7 @@ const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV);
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 
 module.exports = {
+    // outputDir:'docs',
     configureWebpack: config => {
         if (IS_PROD) {
             config.externals = {

@@ -3,10 +3,6 @@ export default {
         url: '/article',
         method: 'GET',
     },
-    articleDetails: {
-        url: '/article/{id}',
-        method: 'GET',
-    },
     articleAdd: {
         url: '/article',
         method: 'POST'

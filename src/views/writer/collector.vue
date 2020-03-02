@@ -1,193 +1,74 @@
 <template>
-    <div  class="w-screen h-screen flex flex-col">
+    <div class="w-screen h-screen flex flex-col">
         <md-toolbar class="flex-none">
-            <h3 class="md-title">Default</h3>
+            <h3 class="md-title">博文</h3>
         </md-toolbar>
-        <md-table class="flex-1 max-height-none" v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
-            <md-table-row slot="md-table-row" slot-scope="{ item }">
-                <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
-                <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-                <md-table-cell md-label="Email" md-sort-by="email">{{ item.email }}</md-table-cell>
-                <md-table-cell md-label="Gender" md-sort-by="gender">{{ item.gender }}</md-table-cell>
-                <md-table-cell md-label="Job Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+        <md-table class="flex-1 max-height-none" v-model="list" md-sort="name" md-sort-order="asc"
+                  md-card md-fixed-header>
+            <md-table-row slot="md-table-row" slot-scope="{item}">
+                <md-table-cell md-label="ID" md-sort-by="id">{{ item.id }}</md-table-cell>
+                <md-table-cell md-label="标题">{{ item.title }}</md-table-cell>
+                <md-table-cell md-label="展示图">
+                    <div class="bg-local bg-cover bg-center bg-no-repeat h-20 w-32 rounded"
+                         :style="item.pic ? 'background-image: url('+$utils.getGitHunUrl(item.pic)+')' :''">
+                    </div>
+                </md-table-cell>
+                <md-table-cell md-label="描述">{{item.desc}}</md-table-cell>
+                <md-table-cell md-label="GitHub" md-sort-by="status">{{ item.github }}</md-table-cell>
+                <md-table-cell md-label="官网" md-sort-by="status">{{ item.website }}</md-table-cell>
+                <md-table-cell md-label="用例" md-sort-by="status">{{ item.example }}</md-table-cell>
+                <md-table-cell md-label="状态" md-sort-by="status">{{ item.status }}</md-table-cell>
+                <md-table-cell md-label="创建时间" md-sort-by="created_at">{{ item.created_at }}</md-table-cell>
+                <md-table-cell md-label="更新时间" md-sort-by="updated_at">{{ item.updated_at }}</md-table-cell>
+                <md-table-cell md-label="操作">
+                    <edit-collector :item="item">
+                        <md-button class="md-icon-button" md-menu-trigger>
+                            <i class="icon-bianji"></i>
+                            <md-tooltip md-direction="bottom">编辑</md-tooltip>
+                        </md-button>
+                    </edit-collector>
+                </md-table-cell>
             </md-table-row>
         </md-table>
         <md-toolbar class="flex-none">
-            <h3 class="md-title">Default</h3>
+            <edit-collector>
+                <md-button class="md-raised">新建</md-button>
+            </edit-collector>
         </md-toolbar>
     </div>
 </template>
 <script>
-    const toLower = text => {
-        return text.toString().toLowerCase()
-    }
-
-    const searchByName = (items, term) => {
-        if (term) {
-            return items.filter(item => toLower(item.name).includes(toLower(term)))
-        }
-
-        return items
-    }
+    import {mapActions, mapGetters} from "vuex";
+    import EditCollector from "./work/editCollector";
 
     export default {
-        name: "git",
+        name: "collectorList",
+        components: {EditCollector},
         data: () => ({
             search: null,
             searched: [],
-            users: [
-                {
-                    id: 1,
-                    name: "Shawna Dubbin",
-                    email: "sdubbin0@geocities.com",
-                    gender: "Male",
-                    title: "Assistant Media Planner"
-                },
-                {
-                    id: 2,
-                    name: "Odette Demageard",
-                    email: "odemageard1@spotify.com",
-                    gender: "Female",
-                    title: "Account Coordinator"
-                },
-                {
-                    id: 3,
-                    name: "Vera Taleworth",
-                    email: "vtaleworth2@google.ca",
-                    gender: "Male",
-                    title: "Community Outreach Specialist"
-                },
-                {
-                    id: 4,
-                    name: "Lonnie Izkovitz",
-                    email: "lizkovitz3@youtu.be",
-                    gender: "Female",
-                    title: "Operator"
-                },
-                {
-                    id: 5,
-                    name: "Thatcher Stave",
-                    email: "tstave4@reference.com",
-                    gender: "Male",
-                    title: "Software Test Engineer III"
-                },
-                {
-                    id: 6,
-                    name: "Karim Chipping",
-                    email: "kchipping5@scribd.com",
-                    gender: "Female",
-                    title: "Safety Technician II"
-                },
-                {
-                    id: 7,
-                    name: "Helge Holyard",
-                    email: "hholyard6@howstuffworks.com",
-                    gender: "Female",
-                    title: "Internal Auditor"
-                },
-                {
-                    id: 8,
-                    name: "Rod Titterton",
-                    email: "rtitterton7@nydailynews.com",
-                    gender: "Male",
-                    title: "Technical Writer"
-                },
-                {
-                    id: 9,
-                    name: "Gawen Applewhite",
-                    email: "gapplewhite8@reverbnation.com",
-                    gender: "Female",
-                    title: "GIS Technical Architect"
-                },
-                {
-                    id: 10,
-                    name: "Nero Mulgrew",
-                    email: "nmulgrew9@plala.or.jp",
-                    gender: "Female",
-                    title: "Staff Scientist"
-                },
-                {
-                    id: 11,
-                    name: "Cybill Rimington",
-                    email: "crimingtona@usnews.com",
-                    gender: "Female",
-                    title: "Assistant Professor"
-                },
-                {
-                    id: 12,
-                    name: "Maureene Eggleson",
-                    email: "megglesonb@elpais.com",
-                    gender: "Male",
-                    title: "Recruiting Manager"
-                },
-                {
-                    id: 13,
-                    name: "Cortney Caulket",
-                    email: "ccaulketc@cbsnews.com",
-                    gender: "Male",
-                    title: "Safety Technician IV"
-                },
-                {
-                    id: 14,
-                    name: "Selig Swynfen",
-                    email: "sswynfend@cpanel.net",
-                    gender: "Female",
-                    title: "Environmental Specialist"
-                },
-                {
-                    id: 15,
-                    name: "Ingar Raggles",
-                    email: "iragglese@cbc.ca",
-                    gender: "Female",
-                    title: "VP Sales"
-                },
-                {
-                    id: 16,
-                    name: "Karmen Mines",
-                    email: "kminesf@topsy.com",
-                    gender: "Male",
-                    title: "Administrative Officer"
-                },
-                {
-                    id: 17,
-                    name: "Salome Judron",
-                    email: "sjudrong@jigsy.com",
-                    gender: "Male",
-                    title: "Staff Scientist"
-                },
-                {
-                    id: 18,
-                    name: "Clarinda Marieton",
-                    email: "cmarietonh@theatlantic.com",
-                    gender: "Male",
-                    title: "Paralegal"
-                },
-                {
-                    id: 19,
-                    name: "Paxon Lotterington",
-                    email: "plotteringtoni@netvibes.com",
-                    gender: "Female",
-                    title: "Marketing Assistant"
-                },
-                {
-                    id: 20,
-                    name: "Maura Thoms",
-                    email: "mthomsj@webeden.co.uk",
-                    gender: "Male",
-                    title: "Actuary"
-                }
-            ],
+            page: 0,
         }),
-        methods: {
-            newUser () {
-                window.alert('Noop')
-            },
-            searchOnTable () {
-                this.searched = searchByName(this.users, this.search)
-            }
+        mounted() {
+            this.loadData()
         },
-        created () {
-            this.searched = this.users
+        methods: {
+            ...mapActions(["collectorList"]),
+            loadData() {
+                let params =
+                    this.collectorList({
+                        params: {
+                            sort: '-updated_at',
+                            page: this.page,
+                        }
+                    })
+            },
+        },
+        computed: {
+            ...mapGetters(['collectorListData']),
+            list() {
+                return this.collectorListData && this.collectorListData.data ? this.collectorListData.data : []
+            }
         }
     }
 </script>
