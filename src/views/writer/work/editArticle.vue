@@ -2,7 +2,7 @@
     <div>
         <md-dialog :md-active.sync="showDialog">
             <md-dialog-title class="text-center">博文</md-dialog-title>
-            <md-dialog-content style="width: 500px;padding-bottom:0">
+            <md-dialog-content style="width: 600px;padding-bottom:0">
                 <md-field>
                     <label>地址</label>
                     <md-input v-model="url"></md-input>
@@ -17,10 +17,7 @@
                     <md-input v-model="fromData.pic"></md-input>
                     <i @click="showFileList" class="icon-wenjian text-lg cursor-pointer"/>
                 </md-field>
-                <md-field>
-                    <label>标签</label>
-                    <md-input v-model="fromData.tags"></md-input>
-                </md-field>
+                <md-chips v-model="fromData.tags" :md-limit="5" md-placeholder="标签"></md-chips>
                 <md-field>
                     <label>描述</label>
                     <md-input v-model="fromData.desc"></md-input>

@@ -60,29 +60,19 @@ export default function (config, data = {}) {
         },
     }
     return new Promise((resolve, reject) => {
+        axios(httpConfig).then((res) => {
+            if (config.method === 'GET'){
+                localforage.setItem(url, res.data).catch(function (err) {
+                    console.error(err);
+                });
+            }
+            resolve(res.data)
+        }).catch((response) => {
+            reject(response)
+        })
         if (cache && config.method === 'GET'){
             localforage.getItem(url).then(function (value) {
-                if (value) {
-                    return resolve(value)
-                }else{
-                    doHttp()
-                }
-            }).catch(function (err) {
-                doHttp()
-            });
-        }else{
-            doHttp()
-        }
-        async function doHttp() {
-            axios(httpConfig).then((res) => {
-                if (config.method === 'GET'){
-                    localforage.setItem(url, res.data).catch(function (err) {
-                        console.error(err);
-                    });
-                }
-                resolve(res.data)
-            }).catch((response) => {
-                reject(response)
+                resolve(value)
             })
         }
     })

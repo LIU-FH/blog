@@ -70,9 +70,9 @@
         </div>
         <div class="grid grid-cols-5 gap-5 mt-5">
             <md-content class="col-span-2 md-elevation-2 h-64 flex flex-col items-center justify-center">
-                <md-button class="md-fab">
-                    <p class="text-white">1000</p>
-                </md-button>
+                <md-button class="md-raised" @click="filePush">更新资源库</md-button>
+                <md-button class="md-raised" @click="getPushLast">最后一次更新</md-button>
+                <md-button class="md-raised" @click="showFileList">所有资源</md-button>
             </md-content>
             <md-content class="col-span-3 md-elevation-2 h-64 overflow-y-auto md-scrollbar">
                 <div v-if="fileUploadData.length > 0">
@@ -89,6 +89,9 @@
                 <div v-else class="w-full h-full flex items-center justify-center">暂无上传任务</div>
             </md-content>
         </div>
+        <md-snackbar class="w-32" md-position="center" :md-duration="3000" :md-active.sync="showSnackbar" md-persistent>
+            <span class="w-full text-center">PUSH任务已提交，请稍后查看。</span>
+        </md-snackbar>
     </div>
 </template>
 
@@ -100,11 +103,25 @@
     export default {
         name: "home",
         components: {EditArticle, UploadFile},
+        data: () => ({
+            showSnackbar: false,
+        }),
+        watch:{
+            filePushData:function () {
+                console.log(this.filePushData)
+                this.showSnackbar = true
+            },
+        },
         methods: {
-            ...mapActions([]),
+            ...mapActions(["filePush","filePushLast","showFileList"]),
+            getPushLast(){
+                this.filePushLast({
+                    cache:false
+                })
+            }
         },
         computed: {
-            ...mapGetters(["fileUploadData"])
+            ...mapGetters(["fileUploadData","filePushData","filePushLastData"])
         }
     };
 </script>

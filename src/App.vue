@@ -46,4 +46,12 @@
     .mdEditor.v-note-wrapper{
         z-index: 0!important;
     }
+
+
+    .tabs-h-full .md-tabs-content{
+        flex: 1;
+    }
+    .tabs-h-full .md-tabs-container, .tabs-h-full .md-tab{
+        height: 100%;
+    }
 </style>

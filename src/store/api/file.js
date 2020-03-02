@@ -1,10 +1,18 @@
 export default {
     fileList: {
-        url: '/file/{type}',
+        url: '/file',
         method: 'GET',
     },
     fileDel: {
-        url: '/file/{id}',
+        url: '/file',
         method: 'DELETE'
+    },
+    filePush: {
+        url: '/file',
+        method: 'PUT'
+    },
+    filePushLast: {
+        url: '/file/push',
+        method: 'GET'
     },
 }

@@ -33,6 +33,10 @@ function getUrlName(url) {
     return arr[arr.length - 1].split('.')[0]
 }
 
+function getGitHunUrl(path) {
+    return path.replace("public/assets", 'https://raw.githubusercontent.com/LIU-FH/assets/master')
+}
+
 export default {
     isObject,
     randomArrItem,
@@ -40,4 +44,5 @@ export default {
     qsStringifyParams,
     qsParseParams,
     getUrlName,
+    getGitHunUrl,
 }
