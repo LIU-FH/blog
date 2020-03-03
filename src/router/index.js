@@ -8,15 +8,6 @@ const Doc = () => import('../views/doc.vue')
 const Collector = () => import('../views/collector.vue')
 const Tool = () => import('../views/tool.vue')
 const About = () => import('../views/about.vue')
-const Writer = () => import('../views/writer/index.vue')
-const WriterHome = () => import('../views/writer/home.vue')
-const WriterArticle = () => import('../views/writer/article.vue')
-const WriterCollector = () => import('../views/writer/collector.vue')
-const WriterDoc = () => import('../views/writer/doc.vue')
-const WriterMdEditor = () => import('../views/writer/work/mdEditor.vue')
-const WriterCheatSheet = () => import('../views/writer/work/cheatSheet.vue')
-const WriterSpider = () => import('../views/writer/work/spider.vue')
-const WriterTurndown = () => import('../views/writer/work/turndown.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -54,48 +45,6 @@ const routes = [
                 component: About,
             },
         ]
-    },
-    {
-        path: '/writer',
-        name: 'writer',
-        component: Writer,
-        children: [
-            {
-                path: '/writer',
-                name: 'WriterHome',
-                component: WriterHome,
-            }, {
-                path: '/writer/article',
-                name: 'WriterArticle',
-                component: WriterArticle,
-            },
-            {
-                path: '/writer/collector',
-                name: 'WriterCollector',
-                component: WriterCollector,
-            }, {
-                path: '/writer/doc',
-                name: 'WriterDoc',
-                component: WriterDoc,
-            },
-        ]
-    },{
-        path: '/writer/mdeditor',
-        name: 'WriterMdEditor',
-        component: WriterMdEditor,
-    },
-    {
-        path: '/writer/spider',
-        name: 'WriterSpider',
-        component: WriterSpider,
-    },{
-        path: '/writer/cheatsheet',
-        name: 'WriterCheatSheet',
-        component: WriterCheatSheet,
-    },{
-        path: '/writer/turndown',
-        name: 'WriterTurndown',
-        component: WriterTurndown,
     }
 ]
 

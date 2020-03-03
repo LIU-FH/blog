@@ -19,10 +19,12 @@
                     <i class="icon-search text-lg"/>
                     <md-tooltip md-direction="bottom">搜索</md-tooltip>
                 </md-button>
-                <md-button to="/writer" class="md-icon-button" md-menu-trigger>
-                    <i class="icon-xiezuo text-lg"/>
-                    <md-tooltip md-direction="bottom">写作台</md-tooltip>
-                </md-button>
+                <a href="http://writer.liufh.com" target="_blank">
+                    <md-button class="md-icon-button" md-menu-trigger>
+                        <i class="icon-xiezuo text-lg"/>
+                        <md-tooltip md-direction="bottom">写作台</md-tooltip>
+                    </md-button>
+                </a>
                 <md-button class="md-icon-button" md-menu-trigger>
                     <i class="icon-shezhi text-lg"/>
                     <md-tooltip md-direction="bottom">设置</md-tooltip>

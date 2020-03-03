@@ -9,11 +9,11 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import utils from "./utils/index";
-import VueClipboard from 'vue-clipboard2'
+// import VueClipboard from 'vue-clipboard2'
 import VueLazyload from 'vue-lazyload'
 
-VueClipboard.config.autoSetContainer = true
-Vue.use(VueClipboard)
+// VueClipboard.config.autoSetContainer = true
+// Vue.use(VueClipboard)
 Vue.prototype.$utils = utils
 Vue.use(VueMaterial)
 
