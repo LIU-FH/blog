@@ -8,6 +8,7 @@ const Doc = () => import('../views/doc.vue')
 const Collector = () => import('../views/collector.vue')
 const Tool = () => import('../views/tool.vue')
 const About = () => import('../views/about.vue')
+const Writer = () => import('../views/writer/index.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -45,7 +46,12 @@ const routes = [
                 component: About,
             },
         ]
-    }
+    },
+    {
+        path: '/writer',
+        name: 'writer',
+        component: Writer,
+    },
 ]
 
 const router = new VueRouter({

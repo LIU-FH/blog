@@ -37,27 +37,27 @@
     export default {
         name: "collector",
         data: () => ({
-            active: 0,
             page: 0,
         }),
         mounted() {
             this.loadData();
         },
         methods: {
-            ...mapActions(["collectorList"]),
+            ...mapActions(["articleList"]),
             loadData() {
                 let params = {
                     sort: '-created_at',
+                    filter: {type: 1},
                     page: this.page,
                 }
                 document.documentElement.scrollTop = 0
-                this.collectorList({
+                this.articleList({
                     params: params
                 })
             },
         },
         computed: {
-            ...mapGetters(['collectorListData']),
+            ...mapGetters(['articleListData']),
         }
     }
 </script>

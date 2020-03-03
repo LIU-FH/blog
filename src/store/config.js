@@ -1,7 +1,6 @@
 import Cookies from 'js-cookie'
 import localforage from 'localforage'
 import Utils from '../utils'
-import _ from 'lodash'
 
 export default {
     user: {

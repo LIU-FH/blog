@@ -29,10 +29,10 @@
                 </div>
             </md-content>
         </div>
-<!--        <div class="text-center pt-8">-->
-<!--            <md-button disabled>Disabled</md-button>-->
-<!--            <md-button>Disabled</md-button>-->
-<!--        </div>-->
+        <!--        <div class="text-center pt-8">-->
+        <!--            <md-button disabled>Disabled</md-button>-->
+        <!--            <md-button>Disabled</md-button>-->
+        <!--        </div>-->
     </div>
 </template>
 
@@ -42,17 +42,17 @@
     export default {
         name: 'index',
         data: () => ({
-            active: 0,
             page: 0,
         }),
         mounted() {
             this.loadData();
         },
         methods: {
-            ...mapActions(["showFileList", "articleList"]),
+            ...mapActions(["articleList"]),
             loadData() {
                 let params = {
                     sort: '-created_at',
+                    filter: {type: 0},
                     page: this.page,
                 }
                 document.documentElement.scrollTop = 0
