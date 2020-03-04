@@ -29,7 +29,12 @@
                 </md-button>
             </div>
         </md-toolbar>
-        <router-view/>
+        <div style="min-height:85vh">
+            <router-view/>
+        </div>
+        <div class="h-32 flex items-center justify-center bg-white">
+            鄂ICP备17016057号
+        </div>
     </div>
 </template>
 
