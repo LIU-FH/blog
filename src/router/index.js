@@ -21,29 +21,35 @@ const routes = [
                 path: '/',
                 name: 'home',
                 component: Home,
+                meta: {keepAlive: true}
             },
             {
                 path: '/article/:category?',
                 name: 'article',
                 component: Article,
+                meta: {keepAlive: true}
             },
             {
                 path: '/collector',
                 name: 'collector',
                 component: Collector,
+                meta: {keepAlive: true}
             }, {
                 path: '/doc',
                 name: 'doc',
                 component: Doc,
+                meta: {keepAlive: true}
             }, {
                 path: '/tool',
                 name: 'tool',
                 component: Tool,
+                meta: {keepAlive: true}
             },
             {
                 path: '/about',
                 name: 'about',
                 component: About,
+                meta: {keepAlive: true}
             },
         ]
     },
@@ -51,6 +57,7 @@ const routes = [
         path: '/writer',
         name: 'writer',
         component: Writer,
+        meta: {keepAlive: true}
     },
 ]
 

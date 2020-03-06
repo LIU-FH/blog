@@ -19,7 +19,7 @@ Vue.use(VueMaterial)
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: require('./assets/img/logo.png'),
+  error: require('./assets/img/error.png'),
   loading: require('./assets/img/loading.gif'),
   attempt: 1
 })

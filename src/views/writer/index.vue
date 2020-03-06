@@ -3,6 +3,11 @@
         <md-toolbar class="bg-white" style="position: fixed;z-index: 8" md-elevation="1">
             <div class="w-full flex justify-between">
                 <div class="flex items-center">
+                    <div  class="mr-5 ml-1">
+                        <md-button to="/" class="md-icon-button">
+                            <i class="icon-shouye text-lg"/>
+                        </md-button>
+                    </div>
                     <md-field>
                         <label>Search</label>
                         <md-input v-model="keyword"></md-input>
@@ -10,7 +15,7 @@
                     <md-button @click="onSearch" class="md-raised">搜索</md-button>
                 </div>
                 <div class="flex items-center">
-                    <md-button class="md-raised">资源管理器</md-button>
+                    <md-button href="http://assets.liufh.com" target="_blank" class="md-raised">资源管理器</md-button>
                     <md-button @click="showEdit" class="md-raised md-accent">新建</md-button>
                 </div>
             </div>

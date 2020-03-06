@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-toolbar class="w-full" style="position: fixed;z-index: 8"
+        <md-toolbar class="w-full" style="position: fixed;z-index: 8;transition:none"
                     :md-elevation="scrollTopData < 30 && $route.name === 'home' ? 0 : 4"
                     :class="scrollTopData < 30 && $route.name === 'home' ? 'md-transparent':'bg-white'">
             <div class="ml-2 flex items-center absolute left-0 top-0 h-full">
@@ -15,17 +15,14 @@
                 </md-button>
             </div>
             <div class="absolute right-0 top-0 h-full flex items-center pr-5">
-                <md-button class="md-icon-button" md-menu-trigger>
+                <md-button class="md-icon-button">
                     <i class="icon-search text-lg"/>
-                    <md-tooltip md-direction="bottom">搜索</md-tooltip>
                 </md-button>
-                <md-button to="/writer" class="md-icon-button" md-menu-trigger>
+                <md-button to="/writer" class="md-icon-button">
                     <i class="icon-xiezuo text-lg"/>
-                    <md-tooltip md-direction="bottom">写作台</md-tooltip>
                 </md-button>
-                <md-button class="md-icon-button" md-menu-trigger>
+                <md-button class="md-icon-button">
                     <i class="icon-shezhi text-lg"/>
-                    <md-tooltip md-direction="bottom">设置</md-tooltip>
                 </md-button>
             </div>
         </md-toolbar>

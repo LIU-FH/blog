@@ -2,7 +2,7 @@
     <div class="pb-12">
         <div class="bg-local bg-cover bg-center bg-no-repeat w-full flex items-center justify-center"
              style="height:100vh;background-image: url(https://raw.githubusercontent.com/LIU-FH/assets/master/2003/05/cd10fea50451a61c00802dbb1b8e0ccb.jpg)">
-            <div class="text-white flex flex-col items-center" style="margin-top: -8vh">
+            <div class="text-white flex flex-col items-center">
                 <div class="text-3xl mb-10">当才华还支撑不起理想的时候，就应该静下心来好好学习</div>
                 <mu-row gutter>
                     <mu-col span="6">
@@ -20,12 +20,12 @@
                     <mu-col span="6">
                         <md-button href="https://github.com/LIU-FH" target="_blank" class="md-icon-button md-raised">
                             <i class="icon-github text-lg"/>
-                            <md-tooltip md-direction="bottom">微信</md-tooltip>
+                            <md-tooltip md-direction="bottom">GitHub</md-tooltip>
                         </md-button>
                     </mu-col><mu-col span="6">
                     <md-button class="md-icon-button md-raised">
                         <i class="icon-youxiang text-lg"/>
-                        <md-tooltip md-direction="bottom">微信</md-tooltip>
+                        <md-tooltip md-direction="bottom">邮箱</md-tooltip>
                     </md-button>
                 </mu-col>
                 </mu-row>

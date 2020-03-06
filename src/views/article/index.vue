@@ -3,8 +3,8 @@
         <div class="grid grid-cols-2 gap-6 mt-8">
             <md-content v-for="(item, index) in articleListData.data" :key="index" class="p-3 md-elevation-7 mb-3">
                 <div class="md:flex">
-                    <div class="md:flex-shrink-0">
-                        <img class="rounded-lg w-56" style="height: 10rem;"
+                    <div class="md:flex-shrink-0 w-56">
+                        <img class="w-full h-full rounded-lg w-56 rounded-sm object-cover" style="height: 9.8rem;"
                              v-lazy="item.pic">
                     </div>
                     <div class="w-full mt-4 md:mt-0 md:ml-6">
