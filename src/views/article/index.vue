@@ -21,7 +21,7 @@
                                     <md-chip v-for="chip in item.tags" :key="chip">{{ chip }}</md-chip>
                                 </div>
                             </div>
-                            <md-button class="md-icon-button md-raised md-primary">
+                            <md-button @click="clickItem(item)" class="md-icon-button md-raised md-primary">
                                 <i class="icon-fangxiangyou"/>
                             </md-button>
                         </div>
@@ -38,6 +38,7 @@
 
 <script>
     import {mapActions, mapGetters} from "vuex";
+    import localforage from 'localforage';
 
     export default {
         name: 'index',
@@ -60,6 +61,11 @@
                     params: params
                 })
             },
+            clickItem(val) {
+                localforage.setItem("article_" + val.id, val).then((value) => {
+                    this.$router.push('/article/' + val.id)
+                })
+            }
         },
         computed: {
             ...mapGetters(['articleListData']),

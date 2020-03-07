@@ -39,22 +39,31 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    .max-height-none .md-content{
-        max-height: none!important;
+
+    .max-height-none .md-content {
+        max-height: none !important;
     }
-    .mdEditor .v-note-op{
-        padding: 5px!important;
-        padding-right: 100px!important;
+
+    .mdEditor .v-note-op {
+        padding: 5px !important;
+        padding-right: 100px !important;
     }
-    .mdEditor.v-note-wrapper{
-        z-index: 0!important;
+
+    .mdEditor.v-note-wrapper {
+        z-index: 0 !important;
     }
 
 
-    .tabs-h-full .md-tabs-content{
+    .tabs-h-full .md-tabs-content {
         flex: 1;
     }
-    .tabs-h-full .md-tabs-container, .tabs-h-full .md-tab{
+
+    .tabs-h-full .md-tabs-container, .tabs-h-full .md-tab {
         height: 100%;
+    }
+
+    .md-menu-content {
+        max-width: 500px !important;
+        width: 500px !important;
     }
 </style>

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 const Index = () => import('../views/index.vue')
 const Home = () => import('../views/home.vue')
 const Article = () => import('../views/article/index.vue')
+const ArticleDetails = () => import('../views/article/details.vue')
 const Doc = () => import('../views/doc.vue')
 const Collector = () => import('../views/collector.vue')
 const Tool = () => import('../views/tool.vue')
@@ -24,9 +25,14 @@ const routes = [
                 meta: {keepAlive: true}
             },
             {
-                path: '/article/:category?',
+                path: '/article',
                 name: 'article',
                 component: Article,
+                meta: {keepAlive: true}
+            },{
+                path: '/article/:id',
+                name: 'article',
+                component: ArticleDetails,
                 meta: {keepAlive: true}
             },
             {
