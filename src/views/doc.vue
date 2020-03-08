@@ -4,7 +4,9 @@
             <md-card v-for="(item, index) in docListData.data" :key="index" class="md-primary" md-theme="black-card">
                 <md-card-header>
                     <md-card-header-text>
-                        <div class="md-title title">{{item.title}}</div>
+                        <a :href="item.content.url" target="_blank">
+                            <div class="md-title title">{{item.title}}</div>
+                        </a>
                         <div class="md-subhead desc">{{item.desc}}</div>
                     </md-card-header-text>
                     <md-card-media>

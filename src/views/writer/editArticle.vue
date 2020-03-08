@@ -15,7 +15,7 @@
                         <md-option :value="3">速查表</md-option>
                     </md-select>
                 </md-field>
-                <md-field v-for="(item,index) in contentArr" :key="index">
+                <md-field v-for="(item,index) in contentArr(fromData.type)" :key="index">
                     <label>{{item.name}}</label>
                     <md-input v-model="fromData.content[item.key]"></md-input>
                 </md-field>
@@ -56,10 +56,11 @@
             fromData: {
                 id: 0,
                 title: "",
-                tupe: -1,
+                type: 0,
                 pic: "",
                 tags: [],
                 desc: "",
+                content: {},
                 status: 1
             },
             contentKeys: [
@@ -92,15 +93,27 @@
                 }
             },
             showEdit(item) {
+                if (!item) {
+                    item = JSON.parse(JSON.stringify(this.fromData));
+                }
+                let arr = this.contentArr(item.type)
+                if (!item.content) {
+                    item.content = {}
+                }
+                for (let i = 0; i < arr.length; i++) {
+                    if (!item.content || !item.content[arr[i].key]) {
+                        Object.assign(item.content, {[arr[i].key]: ''})
+                    }
+                }
                 this.fromData = item
                 this.showDialog = true
+            },
+            contentArr(type) {
+                return type > -1 ? this.contentKeys[type] : []
             }
         },
         computed: {
             ...mapGetters(['articleAddData', 'articleEditData']),
-            contentArr() {
-                return this.fromData.type > -1 ? this.contentKeys[this.fromData.type] : []
-            },
         }
     };
 </script>
