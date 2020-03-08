@@ -14,6 +14,8 @@ module.exports = {
                 "js-cookie": "Cookies",
                 "vue-material":'VueMaterial',
                 "vue-lazyload":"VueLazyload",
+                "marked":"marked",
+                "highlight.js":"hljs",
             };
         }
         const plugins = [];
@@ -33,6 +35,7 @@ module.exports = {
             css: [
                 "https://unpkg.com/vue-material/dist/vue-material.min.css",
                 "https://unpkg.com/vue-material/dist/theme/default.css",
+                "https://cdn.bootcss.com/highlight.js/9.15.10/styles/a11y-light.min.css",
             ],
             js: [
                 "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js",
@@ -42,6 +45,8 @@ module.exports = {
                 "https://unpkg.com/axios@0.19.2/dist/axios.min.js",
                 "https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js",
                 "https://unpkg.com/vue-lazyload/vue-lazyload.js",
+                "https://cdn.jsdelivr.net/npm/marked/marked.min.js",
+                "https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js",
             ]
         } : {};
         config.plugin("html").tap(args => {
