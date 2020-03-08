@@ -1,10 +1,10 @@
 <template>
     <div class="container mx-auto py-20">
         <div class="grid grid-cols-2 gap-6 mt-8">
-            <md-content v-for="(item, index) in articleListData.data" :key="index" class="p-3 md-elevation-7 mb-3">
+            <md-content v-for="(item, index) in list" :key="index" class="p-3 md-elevation-7 mb-3">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0 w-56">
-                        <img class="w-full h-full rounded-lg w-56 rounded-sm object-cover" style="height: 9.8rem;"
+                        <img class="w-full h-full w-56 rounded-sm object-cover" style="height: 9.8rem;"
                              v-lazy="item.pic">
                     </div>
                     <div class="w-full mt-4 md:mt-0 md:ml-6">
@@ -29,10 +29,13 @@
                 </div>
             </md-content>
         </div>
-        <!--        <div class="text-center pt-8">-->
-        <!--            <md-button disabled>Disabled</md-button>-->
-        <!--            <md-button>Disabled</md-button>-->
-        <!--        </div>-->
+        <div class="text-center pt-10">
+            <div v-if="isLoad">加载中</div>
+            <div v-else>
+                <div v-if="isLast">没有更多了</div>
+                <div v-else>加载更多</div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -41,22 +44,39 @@
     import localforage from 'localforage';
 
     export default {
-        name: 'index',
+        name: 'articleIndex',
         data: () => ({
-            page: 0,
+            page: 1,
+            isLoad: false,
+            list: [],
+            isLast: false,
         }),
+        watch: {
+            scrollBottomData: function () {
+                if (this.scrollBottomData < 100 && !this.isLoad && !this.isLast) {
+                    this.page = this.page + 1;
+                    this.loadData()
+                }
+            },
+            articleListData: function (val) {
+                this.isLoad = false
+                this.list = this.list.concat(val.data)
+                this.isLast = val.meta.current_page >= val.meta.last_page
+            }
+        },
         mounted() {
+            document.documentElement.scrollTop = 0
             this.loadData();
         },
         methods: {
             ...mapActions(["articleList"]),
             loadData() {
+                this.isLoad = true
                 let params = {
                     sort: '-created_at',
-                    filter: {type: 0},
+                    filter: {type: 0, status: 1},
                     page: this.page,
                 }
-                document.documentElement.scrollTop = 0
                 this.articleList({
                     params: params
                 })
@@ -68,7 +88,7 @@
             }
         },
         computed: {
-            ...mapGetters(['articleListData']),
+            ...mapGetters(['articleListData', 'scrollBottomData']),
         }
     }
 </script>

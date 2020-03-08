@@ -31,7 +31,7 @@
                     <md-table-cell md-label="标题">{{ item.title }}</md-table-cell>
                     <md-table-cell md-label="展示图">
                         <div class="bg-local bg-cover bg-center bg-no-repeat h-20 w-32 rounded"
-                             :style="item.pic ? 'background-image: url('+$utils.getGitHunUrl(item.pic)+')' :''">
+                             :style="item.pic ? 'background-image: url('+item.pic+')' :''">
                         </div>
                     </md-table-cell>
                     <md-table-cell md-label="内容">
@@ -75,10 +75,11 @@
             this.loadData()
         },
         methods: {
-            ...mapActions(["articleList"]),
+            ...mapActions(["writerList"]),
             loadData() {
                 let params = {
                     sort: '-updated_at',
+
                 }
                 if (this.keyword) {
                     params.filter = {
@@ -87,7 +88,7 @@
                         desc: this.keyword,
                     }
                 }
-                this.articleList({params: params})
+                this.writerList({params: params})
             },
             onSearch() {
                 this.page = 0
@@ -98,9 +99,9 @@
             }
         },
         computed: {
-            ...mapGetters(['articleListData']),
+            ...mapGetters(['writerListData']),
             list() {
-                return this.articleListData && this.articleListData.data ? this.articleListData.data : []
+                return this.writerListData && this.writerListData.data ? this.writerListData.data : []
             }
         }
     };

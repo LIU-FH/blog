@@ -3,6 +3,18 @@ export default {
         url: '/article',
         method: 'GET',
     },
+    collectorList: {
+        url: '/article',
+        method: 'GET',
+    },
+    docList: {
+        url: '/article',
+        method: 'GET',
+    },
+    writerList: {
+        url: '/article',
+        method: 'GET',
+    },
     articleAdd: {
         url: '/article',
         method: 'POST'

@@ -1,9 +1,9 @@
 <template>
     <div id="app">
-        <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
+        <keep-alive v-if="$route.meta.keepAlive">
+            <router-view></router-view>
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <router-view v-else></router-view>
     </div>
 </template>
 <script>
@@ -16,11 +16,14 @@
             window.addEventListener('scroll', this.handleScroll, true)
         },
         methods: {
-            ...mapActions(['scrollTop']),
+            ...mapActions(['scrollTop', 'scrollBottom']),
             handleScroll() {
                 if (!scrollEven) {
-                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-                    this.scrollTop(scrollTop);
+                    let scrollTopHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+                    this.scrollTop(scrollTopHeight);
+                    let windowHeight = document.documentElement.clientHeight || document.body.clientHeight
+                    let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+                    this.scrollBottom(scrollHeight - scrollTopHeight - windowHeight);
                     setTimeout(() => {
                         scrollEven = false
                     }, 300)

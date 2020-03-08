@@ -4,31 +4,24 @@
              style="height:100vh;background-image: url(https://raw.githubusercontent.com/LIU-FH/assets/master/2003/05/cd10fea50451a61c00802dbb1b8e0ccb.jpg)">
             <div class="text-white flex flex-col items-center">
                 <div class="text-3xl mb-10">当才华还支撑不起理想的时候，就应该静下心来好好学习</div>
-                <mu-row gutter>
-                    <mu-col span="6">
-                        <md-button class="md-icon-button md-raised">
-                            <i class="icon-qq text-lg"/>
-                            <md-tooltip md-direction="bottom">QQ</md-tooltip>
-                        </md-button>
-                    </mu-col>
-                    <mu-col span="6">
-                        <md-button class="md-icon-button md-raised">
-                            <i class="icon-weixin text-lg"/>
-                            <md-tooltip md-direction="bottom">微信</md-tooltip>
-                        </md-button>
-                    </mu-col>
-                    <mu-col span="6">
-                        <md-button href="https://github.com/LIU-FH" target="_blank" class="md-icon-button md-raised">
-                            <i class="icon-github text-lg"/>
-                            <md-tooltip md-direction="bottom">GitHub</md-tooltip>
-                        </md-button>
-                    </mu-col><mu-col span="6">
+                <div class="grid grid-cols-4 gap-6 mt-8">
+                    <md-button class="md-icon-button md-raised">
+                        <i class="icon-qq text-lg"/>
+                        <md-tooltip md-direction="bottom">QQ</md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button md-raised">
+                        <i class="icon-weixin text-lg"/>
+                        <md-tooltip md-direction="bottom">微信</md-tooltip>
+                    </md-button>
+                    <md-button href="https://github.com/LIU-FH" target="_blank" class="md-icon-button md-raised">
+                        <i class="icon-github text-lg"/>
+                        <md-tooltip md-direction="bottom">GitHub</md-tooltip>
+                    </md-button>
                     <md-button class="md-icon-button md-raised">
                         <i class="icon-youxiang text-lg"/>
                         <md-tooltip md-direction="bottom">邮箱</md-tooltip>
                     </md-button>
-                </mu-col>
-                </mu-row>
+                </div>
             </div>
         </div>
         <div class="container mx-auto mt-16">
@@ -36,7 +29,8 @@
                 <md-card>
                     <md-card-area>
                         <md-card-media>
-                            <img src="https://raw.githubusercontent.com/LIU-FH/assets/master/2003/05/fb4411310b2b5946515d3cebf323b9e8.jpg" alt="People">
+                            <img src="https://raw.githubusercontent.com/LIU-FH/assets/master/2003/05/fb4411310b2b5946515d3cebf323b9e8.jpg"
+                                 alt="People">
                         </md-card-media>
                         <md-card-header>
                             <div class="md-title">资源管理器</div>
@@ -59,7 +53,7 @@
 
     export default {
         name: "home",
-        data: () => ({})
+        data: () => ({}),
     };
 </script>
 
