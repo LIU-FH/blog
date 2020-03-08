@@ -24,10 +24,10 @@
             <md-toolbar class="flex-none">
                 <h3 class="md-title">博文</h3>
             </md-toolbar>
-            <md-table class="flex-1 max-height-none" v-model="list" md-sort="name" md-sort-order="asc">
+            <md-table class="flex-1 max-height-none" v-model="writerListData.data" md-sort="name" md-sort-order="asc">
                 <md-table-row slot="md-table-row" slot-scope="{item}">
                     <md-table-cell md-label="ID" md-sort-by="id">{{ item.id }}</md-table-cell>
-                    <md-table-cell md-label="标题">{{ types[item.type] }}</md-table-cell>
+                    <md-table-cell md-label="分类">{{ types[item.type] }}</md-table-cell>
                     <md-table-cell md-label="标题">{{ item.title }}</md-table-cell>
                     <md-table-cell md-label="展示图">
                         <div class="bg-local bg-cover bg-center bg-no-repeat h-20 w-32 rounded"
@@ -38,18 +38,19 @@
                         <code>{{item.tags.join(',')}}</code>
                     </md-table-cell>
                     <md-table-cell md-label="描述">{{item.desc}}</md-table-cell>
-                    <md-table-cell md-label="内容">
-                        <code>{{item.content}}</code>
-                    </md-table-cell>
+                    <md-table-cell md-label="内容">{{item.content}}</md-table-cell>
                     <md-table-cell md-label="状态" md-sort-by="status">
                         {{ item.status ? "开启":"关闭" }}
                     </md-table-cell>
-                    <md-table-cell md-label="创建时间" md-sort-by="created_at">{{ item.created_at }}</md-table-cell>
-                    <md-table-cell md-label="更新时间" md-sort-by="updated_at">{{ item.updated_at }}</md-table-cell>
+                    <md-table-cell md-label="更新时间" md-sort-by="updated_at">{{item.updated_at}}</md-table-cell>
                     <md-table-cell md-label="操作">
                         <md-button @click="showEdit(item)" class="md-icon-button" md-menu-trigger>
                             <i class="icon-bianji"></i>
                             <md-tooltip md-direction="bottom">编辑</md-tooltip>
+                        </md-button>
+                        <md-button @click="del(item.id)" class="md-icon-button" md-menu-trigger>
+                            <i class="icon-shanchu"></i>
+                            <md-tooltip md-direction="bottom">删除</md-tooltip>
                         </md-button>
                     </md-table-cell>
                 </md-table-row>
@@ -71,11 +72,22 @@
             keyword: '',
             types: ['博文', '收藏', '文档', '速查表'],
         }),
+        watch:{
+            articleDelData:function () {
+                this.loadData()
+            },
+            articleAddData: function () {
+                this.loadData()
+            },
+            articleEditData: function () {
+                this.loadData()
+            },
+        },
         mounted() {
             this.loadData()
         },
         methods: {
-            ...mapActions(["writerList"]),
+            ...mapActions(["writerList",'articleDel']),
             loadData() {
                 let params = {
                     sort: '-updated_at',
@@ -98,13 +110,15 @@
             },
             showEdit(item) {
                 this.$refs.editArticle.showEdit(item)
+            },
+            del(id){
+                this.articleDel({
+                    path:{id:id}
+                })
             }
         },
         computed: {
-            ...mapGetters(['writerListData']),
-            list() {
-                return this.writerListData && this.writerListData.data ? this.writerListData.data : []
-            }
+            ...mapGetters(['writerListData','articleDelData','articleEditData','articleAddData']),
         }
     };
 </script>

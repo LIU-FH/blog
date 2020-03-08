@@ -21,9 +21,9 @@
                         </div>
                     </div>
                 </md-content>
-                <md-content class="md-elevation-3 mb-5">
-                    123
-                </md-content>
+<!--                <md-content class="md-elevation-3 mb-5">-->
+<!--                    123-->
+<!--                </md-content>-->
             </div>
             <div class="col-span-8">
                 <md-content class="p-3 md-elevation-3 mb-3">

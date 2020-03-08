@@ -1,7 +1,7 @@
 <template>
     <div>
         <md-toolbar class="w-full" style="position: fixed;z-index: 8;transition:none"
-                    :md-elevation="isTransparent === 'home' ? 0 : 4"
+                    :md-elevation="isTransparent ? 0 : 4"
                     :class="isTransparent ? 'md-transparent':'bg-white'">
             <div class="ml-2 flex items-center absolute left-0 top-0 h-full">
                 <img class="w-32" src="../assets/img/logo.png">
@@ -65,7 +65,7 @@
             ],
             selectedEmployee: null,
             employees: [],
-            searchWidth:200,
+            searchWidth: 200,
         }),
         watch: {
             articleListData: function (val) {
@@ -85,10 +85,10 @@
                     params: params
                 })
             },
-            clickItem(val){
-                if (val.type === 0){
+            clickItem(val) {
+                if (val.type === 0) {
 
-                }else{
+                } else {
                     window.open(val.content);
                 }
             }

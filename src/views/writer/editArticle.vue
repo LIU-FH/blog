@@ -17,7 +17,7 @@
                 </md-field>
                 <md-field v-for="(item,index) in contentArr" :key="index">
                     <label>{{item.name}}</label>
-                    <md-input v-model="content[item.key]"></md-input>
+                    <md-input v-model="fromData.content[item.key]"></md-input>
                 </md-field>
                 <md-field>
                     <label>展示图</label>
@@ -59,7 +59,6 @@
                 tupe: -1,
                 pic: "",
                 tags: [],
-                content: {},
                 desc: "",
                 status: 1
             },
@@ -81,7 +80,6 @@
         methods: {
             ...mapActions(['articleAdd', 'articleEdit']),
             doSubmit() {
-                this.fromData.content = this.content
                 if (this.fromData.id) {
                     this.articleEdit({
                         params: this.fromData,
@@ -103,14 +101,6 @@
             contentArr() {
                 return this.fromData.type > -1 ? this.contentKeys[this.fromData.type] : []
             },
-            content() {
-                let arr = this.fromData.type > -1 ? this.contentKeys[this.fromData.type] : []
-                let newArr = {}
-                for (let i = 0; i < arr.length; i++) {
-                    newArr[arr[i].key] = newArr[arr[i].key] ? newArr[arr[i].key] : ''
-                }
-                return newArr
-            }
         }
     };
 </script>

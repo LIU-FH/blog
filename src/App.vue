@@ -9,10 +9,12 @@
 <script>
     let scrollEven = false
     import {mapActions} from 'vuex'
+    import localforage from 'localforage'
 
     export default {
         name: "App",
         mounted: function () {
+            localforage.clear()
             window.addEventListener('scroll', this.handleScroll, true)
         },
         methods: {
