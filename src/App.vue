@@ -16,7 +16,7 @@
             window.addEventListener('scroll', this.handleScroll, true)
         },
         methods: {
-            ...mapActions(['scrollTop', 'scrollBottom']),
+            ...mapActions(['scrollTop', 'scrollBottom', "initDone"]),
             handleScroll() {
                 if (!scrollEven) {
                     let scrollTopHeight = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop

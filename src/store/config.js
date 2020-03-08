@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import Utils from '../utils'
 
 export default {
+    initDone:{},
     user: {
         mutations: function (state) {
             return Cookies.get('user') ? JSON.parse(Utils.decodeEntities(Cookies.get('user'))) : {}

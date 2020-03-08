@@ -2,6 +2,7 @@ import axios from "axios";
 import qs from "qs";
 import Cookies from "js-cookie";
 import Utils from '../utils'
+import localforage from 'localforage';
 
 const baseURL = process.env.NODE_ENV === "production" ? "/api/v1" : "http://local.api.com/api/v1"
 
@@ -13,10 +14,10 @@ const baseURL = process.env.NODE_ENV === "production" ? "/api/v1" : "http://loca
  */
 export default function (config, data = {}) {
     let cache = true
-    if(data.cache !== undefined){
+    if (data.cache !== undefined) {
         cache = data.cache
-    }else if (config.cache !== undefined){
-        cache =  config.cache
+    } else if (config.cache !== undefined) {
+        cache = config.cache
     }
     let url = config.url, fromData = {}
     config.method = config.method ? config.method : "GET"
@@ -59,11 +60,30 @@ export default function (config, data = {}) {
         },
     }
     return new Promise((resolve, reject) => {
-        axios(httpConfig).then((res) => {
-            resolve(res.data)
-        }).catch((response) => {
-            reject(response)
-        })
+        if (cache && config.method === 'GET') {
+            localforage.getItem(url).then(function (value) {
+                if (value) {
+                    return resolve(value)
+                } else {
+                    doHttp()
+                }
+            }).catch(() => {
+                doHttp()
+            })
+        } else {
+            doHttp()
+        }
+
+        async function doHttp() {
+            axios(httpConfig).then((res) => {
+                if (config.method === 'GET') {
+                    localforage.setItem(url, res.data)
+                }
+                return resolve(res.data)
+            }).catch((response) => {
+                reject(response)
+            })
+        }
     })
 }
 

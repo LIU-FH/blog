@@ -78,7 +78,7 @@
                     page: this.page,
                 }
                 this.articleList({
-                    params: params
+                    params: params,
                 })
             },
             clickItem(val) {
@@ -89,7 +89,7 @@
         },
         computed: {
             ...mapGetters(['articleListData', 'scrollBottomData']),
-        }
+        },
     }
 </script>
 

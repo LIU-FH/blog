@@ -3,7 +3,7 @@
         <md-toolbar class="bg-white" style="position: fixed;z-index: 8" md-elevation="1">
             <div class="w-full flex justify-between">
                 <div class="flex items-center">
-                    <div  class="mr-5 ml-1">
+                    <div class="mr-5 ml-1">
                         <md-button to="/" class="md-icon-button">
                             <i class="icon-shouye text-lg"/>
                         </md-button>
@@ -79,7 +79,6 @@
             loadData() {
                 let params = {
                     sort: '-updated_at',
-
                 }
                 if (this.keyword) {
                     params.filter = {
@@ -88,7 +87,10 @@
                         desc: this.keyword,
                     }
                 }
-                this.writerList({params: params})
+                this.writerList({
+                    params: params,
+                    cache: false
+                })
             },
             onSearch() {
                 this.page = 0
