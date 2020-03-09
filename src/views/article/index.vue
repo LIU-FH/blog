@@ -1,10 +1,10 @@
 <template>
     <div class="container mx-auto py-20">
         <div class="grid grid-cols-2 gap-6 mt-8">
-            <md-content v-for="(item, index) in list" :key="index" class="p-3 md-elevation-7 mb-3">
+            <md-content v-for="(item, index) in list" :key="index" class="p-3 md-elevation-2 mb-3">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0 w-56">
-                        <img class="w-full h-full w-56 rounded-sm object-cover" style="height: 9.8rem;"
+                        <img class="w-full h-full w-56 rounded-sm object-cover" style="height: 10.2rem;"
                              v-lazy="item.pic">
                     </div>
                     <div class="w-full mt-4 md:mt-0 md:ml-6">
@@ -14,7 +14,7 @@
                         <p class="mt-1 text-gray-600 desc leading-6 h-12 py-1">
                             {{item.desc}}
                         </p>
-                        <div class="flex items-end justify-between mt-4">
+                        <div class="flex items-end justify-between mt-6">
                             <div>
                                 <p class="text-gray-800">{{item.created_at}}</p>
                                 <div class="mt-2">

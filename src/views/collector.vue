@@ -1,10 +1,10 @@
 <template>
     <div class="container mx-auto py-24">
-        <div class="grid grid-cols-6 gap-6">
-            <md-card v-for="(item, index) in list" :key="index">
+        <div class="grid grid-cols-5 gap-6">
+            <md-card class="md-elevation-2" v-for="(item, index) in list" :key="index">
                 <md-card-area>
                     <md-card-media class="border-b">
-                        <img style="width: 193px;height: 111px" class="object-cover rounded-t-sm"
+                        <img class="object-cover rounded-t-sm" style="height:10rem"
                              v-lazy="item.pic">
                         <div class="absolute text-center w-full" style="margin-top: -20px">
                             <md-button v-if="item.content.github" :href="item.content.github" target="_blank"
@@ -27,7 +27,7 @@
                     <md-card-header class="title h-12 leading-6 text-lg font-medium mt-2 text-center">
                         {{item.title}}
                     </md-card-header>
-                    <md-card-content class="desc h-10 leading-4 mt-2 mb-3 text-sm text-gray-600"
+                    <md-card-content class="desc h-10 leading-6 mt-2 mb-3 text-sm text-gray-600"
                                      style="font-size:.85rem;">
                         {{item.desc}}
                     </md-card-content>

@@ -8,7 +8,7 @@ export default {
         method: 'GET',
     },
     docList: {
-        url: '/article',
+        url: '/doc',
         method: 'GET',
     },
     writerList: {
