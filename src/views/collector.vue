@@ -24,11 +24,11 @@
                             </md-button>
                         </div>
                     </md-card-media>
-                    <md-card-header class="title h-12 leading-5 text-lg font-medium mt-2 text-center">
+                    <md-card-header class="title leading-5 text-lg font-medium mt-2 text-center" style="height: 2.8rem;">
                         {{item.title}}
                     </md-card-header>
-                    <md-card-content class="desc h-10 leading-6 mt-2 mb-4 text-sm text-gray-600"
-                                     style="font-size:.85rem;">
+                    <md-card-content class="desc leading-6 mt-2 mb-4 text-sm text-gray-600"
+                                     style="font-size:.85rem;height: 2.8rem;">
                         {{item.desc}} {{item.desc}} {{item.desc}} {{item.desc}}
                     </md-card-content>
                 </md-card-area>
