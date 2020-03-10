@@ -29,7 +29,7 @@
                     </md-card-header>
                     <md-card-content class="desc leading-6 mt-2 mb-4 text-sm text-gray-600"
                                      style="font-size:.85rem;height: 2.8rem;">
-                        {{item.desc}} {{item.desc}} {{item.desc}} {{item.desc}}
+                        {{item.desc}}
                     </md-card-content>
                 </md-card-area>
             </md-card>

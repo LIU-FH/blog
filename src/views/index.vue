@@ -48,8 +48,8 @@ export default {
     navData: [
       { title: "首页", to: "/", name: "home" },
       { title: "博文", to: "/article", name: "article" },
-      { title: "收藏", to: "/collector", name: "collector" },
       { title: "文档", to: "/doc", name: "doc" },
+      { title: "收藏", to: "/collector", name: "collector" },
       // {title: '工具', to: '/tool', name: 'tool', disabled: true},
       { title: "关于", to: "/about", name: "about", disabled: true }
     ]
